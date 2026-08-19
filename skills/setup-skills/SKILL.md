@@ -1,22 +1,23 @@
 ---
 name: setup-skills
-description: Add a skill to the global library at /Users/michal/Skills, or connect that library to Claude Code on a new machine. Use when asked to create, install, or write a skill, or when skills are not being discovered.
+description: Add a skill to the global library on the user's machine, or connect that library to a harness on a new machine.
+disable-model-invocation: true
 ---
 
 # Setup skills
 
-The global skill library lives at `/Users/michal/Skills`. Skills go in `skills/`, one directory each. Everything else in the repo is docs.
+The global skill library lives at `$HOME/Skills`. Skills go in the `skills/` directory, one subfolder each. Everything else in the repo is docs.
 
 ```
-/Users/michal/Skills/
+$HOME/Skills/
   README.md
   skills/
     unslop/SKILL.md
     setup-skills/SKILL.md
 ```
 
-## Connect the library to Claude Code
-
+## Connecting to harnesses
+### Claude Code
 Claude Code reads personal skills from `~/.claude/skills`. Point that path at the `skills/` subdirectory:
 
 ```
@@ -27,7 +28,7 @@ The link targets `skills/`, not the repo root. Pointing it at the root makes Cla
 
 That is the entire setup. There is no `settings.json` entry and no plugin install. Skill discovery at that path is built in.
 
-If `~/.claude/skills` already exists, check what it is before replacing it:
+If `~/.claude/skills` already exists, check what it is and ask the user how to proceed before replacing it:
 
 ```
 test -L ~/.claude/skills && readlink ~/.claude/skills
