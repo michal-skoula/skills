@@ -2,6 +2,16 @@
 
 Canonical source for AI skills on this machine. Every harness reads from here instead of keeping its own copy.
 
+Skills live in `skills/`, one directory each. The rest of the repo is free for docs and anything else.
+
+```
+Skills/
+  README.md
+  skills/
+    setup-skills/SKILL.md
+    unslop/SKILL.md
+```
+
 A skill is a folder holding a `SKILL.md`. The file starts with YAML frontmatter naming the skill and describing when it applies, then gives the instructions:
 
 ```markdown
@@ -18,39 +28,27 @@ Edit text to remove AI patterns and add human voice.
 
 The `description` decides when the skill loads, so write it as a trigger condition, not a summary.
 
-## Layout
-
-```
-Skills/
-  README.md
-  unslop/
-    SKILL.md
-```
-
-One directory per skill. Directory name should match the frontmatter `name`.
-
 ## Wiring a harness
 
-Claude Code reads personal skills from `~/.claude/skills`. Point that path here:
+Claude Code reads personal skills from `~/.claude/skills`. Point that path at the `skills/` subdirectory:
 
 ```
-ln -s /Users/michal/Skills ~/.claude/skills
+ln -s /Users/michal/Skills/skills ~/.claude/skills
 ```
+
+Link to `skills/`, not the repo root, or Claude Code reads `README.md` and `.git` as skill candidates and finds nothing.
 
 That is the whole setup. No settings.json entry, no plugin install. Claude Code picks up skills at startup, so restart the session after adding one.
 
-Other harnesses attach the same way: symlink their expected skills path to this folder. Nothing here is Claude Code specific.
+Other harnesses attach the same way. Nothing here is Claude Code specific, though Claude Code is the only one wired up today.
 
 ## Adding a skill
 
-1. `mkdir <name>` and write `<name>/SKILL.md` with `name` and `description` frontmatter.
-2. Restart the harness.
-3. Confirm it appears in the skills list, then give it a task it should catch.
-
-Getting it listed only proves the file is readable. Run a real task through it to prove the description triggers.
+The `setup-skills` skill covers this, including how to verify a new skill without restarting your session. Short version: create `skills/<name>/SKILL.md` with `name` and `description` frontmatter, then test it from a fresh process.
 
 ## Installed
 
+- `setup-skills` explains this layout and the symlink wiring.
 - `unslop` strips AI writing tells. Taken verbatim from [cursor/plugins](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md).
 
 ## On a second machine
