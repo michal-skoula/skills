@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Czech Copy Skills — Landscape</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-subtle: #fafafa;
+    --fg: #0a0a0a;
+    --fg-muted: #666666;
+    --fg-faint: #8f8f8f;
+    --border: #ebebeb;
+    --border-strong: #d4d4d4;
+    --accent: #0a0a0a;
+    --pill-bg: #f2f2f2;
+    --good-bg: #f0fdf4;
+    --good-br: #bbf7d0;
+    --good-fg: #15803d;
+    --warn-bg: #fffbeb;
+    --warn-br: #fde68a;
+    --warn-fg: #b45309;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #000000;
+      --bg-subtle: #0a0a0a;
+      --fg: #ededed;
+      --fg-muted: #a1a1a1;
+      --fg-faint: #6f6f6f;
+      --border: #1f1f1f;
+      --border-strong: #333333;
+      --accent: #ededed;
+      --pill-bg: #161616;
+      --good-bg: #04170a;
+      --good-br: #1a4d2a;
+      --good-fg: #4ade80;
+      --warn-bg: #1a1204;
+      --warn-br: #4d3a12;
+      --warn-fg: #fbbf24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #000000;
+    --bg-subtle: #0a0a0a;
+    --fg: #ededed;
+    --fg-muted: #a1a1a1;
+    --fg-faint: #6f6f6f;
+    --border: #1f1f1f;
+    --border-strong: #333333;
+    --accent: #ededed;
+    --pill-bg: #161616;
+    --good-bg: #04170a;
+    --good-br: #1a4d2a;
+    --good-fg: #4ade80;
+    --warn-bg: #1a1204;
+    --warn-br: #4d3a12;
+    --warn-fg: #fbbf24;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 120px; }
+
+  /* ---- header ---- */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 88px 0 40px;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin: 0 0 20px;
+  }
+  h1 {
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    font-weight: 650;
+    margin: 0 0 18px;
+  }
+  .lede { font-size: 18px; color: var(--fg-muted); margin: 0; max-width: 62ch; letter-spacing: -0.014em; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 20px;
+    margin-top: 28px;
+    font-family: var(--mono); font-size: 12px; color: var(--fg-faint);
+  }
+
+  /* ---- sections ---- */
+  section { margin-bottom: 64px; }
+  h2 {
+    font-size: 13px;
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    font-weight: 500;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 17px; letter-spacing: -0.02em; font-weight: 600; margin: 32px 0 8px; }
+  p { margin: 0 0 14px; max-width: 72ch; }
+  a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--border-strong); }
+  a:hover { border-bottom-color: var(--fg); }
+  code {
+    font-family: var(--mono); font-size: 0.88em;
+    background: var(--pill-bg);
+    padding: 2px 6px; border-radius: 4px;
+    letter-spacing: 0;
+  }
+  strong { font-weight: 600; }
+
+  /* ---- verdict ---- */
+  .verdict {
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 28px 30px;
+    background: var(--bg-subtle);
+  }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict .big {
+    font-size: 22px; letter-spacing: -0.028em; font-weight: 600;
+    line-height: 1.35; margin-bottom: 14px;
+  }
+
+  /* ---- table ---- */
+  .scroll { overflow-x: auto; margin: 0 -24px; padding: 0 24px; }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
+  thead th {
+    text-align: left;
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-faint);
+    padding: 0 16px 10px 0; border-bottom: 1px solid var(--border-strong);
+    white-space: nowrap;
+  }
+  tbody td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr.pick td { background: var(--good-bg); }
+  tbody tr.pick td:first-child { box-shadow: inset 2px 0 0 var(--good-fg); padding-left: 14px; }
+  .repo { font-family: var(--mono); font-size: 13px; letter-spacing: -0.01em; display: block; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .dim { color: var(--fg-muted); }
+
+  .tag {
+    display: inline-block; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border-strong);
+    color: var(--fg-muted); white-space: nowrap;
+  }
+  .tag.mit { color: var(--good-fg); border-color: var(--good-br); background: var(--good-bg); }
+  .tag.unk { color: var(--warn-fg); border-color: var(--warn-br); background: var(--warn-bg); }
+  .tag.pick { color: var(--good-fg); border-color: var(--good-br); background: var(--good-bg); margin-left: 8px; }
+
+  /* ---- lists ---- */
+  ul { margin: 0 0 14px; padding-left: 20px; max-width: 72ch; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--fg-faint); }
+
+  /* ---- callout ---- */
+  .callout {
+    border: 1px solid var(--warn-br); background: var(--warn-bg);
+    border-radius: 10px; padding: 20px 24px;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout h3 { margin-top: 0; color: var(--warn-fg); font-size: 15px; }
+
+  /* ---- grid cards ---- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .card {
+    border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px;
+    background: var(--bg-subtle);
+  }
+  .card h4 { margin: 0 0 6px; font-size: 14px; font-family: var(--mono); letter-spacing: -0.01em; font-weight: 500; }
+  .card p { font-size: 13.5px; color: var(--fg-muted); margin: 0; }
+
+  /* ---- method ---- */
+  .method { font-size: 13.5px; color: var(--fg-muted); }
+  .method code { font-size: 0.9em; }
+
+  footer {
+    border-top: 1px solid var(--border); padding-top: 24px; margin-top: 80px;
+    font-family: var(--mono); font-size: 11.5px; color: var(--fg-faint);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  @media (max-width: 640px) {
+    header { padding-top: 56px; }
+    .wrap { padding: 0 18px 80px; }
+    .scroll { margin: 0 -18px; padding: 0 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Skills library · considerations</p>
+  <h1>Czech copy skills</h1>
+  <p class="lede">Survey of what already exists for writing Czech copy with agents, and what is worth inheriting into this directory.</p>
+  <div class="meta">
+    <span>2026-08-19</span>
+    <span>Sources: GitHub API · npm · claude.ai catalog · skill registries</span>
+    <span>Verdict: inherit 1, maybe 2</span>
+  </div>
+</header>
+
+<section>
+  <h2>Headline finding</h2>
+  <div class="verdict">
+    <p class="big">A “Czech copywriting” skill does not exist. The entire published genre is Czech anti-AI-slop and humanizer skills.</p>
+    <p>Which means: the Czech ecosystem has built exactly one thing, and it is the Czech counterpart to the <code>unslop</code> skill already in this library. Nobody has published Czech brand voice, Czech SEO, Czech long-form, or Czech product-copy skills. That gap is real and unfilled.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Candidates</h2>
+  <div class="scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Repo</th>
+        <th>Stars</th>
+        <th>Updated</th>
+        <th>License</th>
+        <th>Shape</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="pick">
+        <td>
+          <a class="repo" href="https://github.com/nowork-ai/anti-ai-slop-cz">nowork-ai/anti-ai-slop-cz</a>
+          <span class="tag pick">pick</span>
+        </td>
+        <td class="num">20</td>
+        <td class="num dim">2026-06-03</td>
+        <td><span class="tag unk">custom</span></td>
+        <td class="dim">5&nbsp;KB <code>SKILL.md</code> + 6&nbsp;KB <code>references/zakazana-slova.md</code>. Also ships a 22&nbsp;KB full guide and a paste-into-chat short version.</td>
+      </tr>
+      <tr>
+        <td><a class="repo" href="https://github.com/bejek/humanizer-czech">bejek/humanizer-czech</a></td>
+        <td class="num">24</td>
+        <td class="num dim">2026-04-30</td>
+        <td><span class="tag mit">MIT</span></td>
+        <td class="dim">Single 28&nbsp;KB <code>SKILL.md</code>. 27 patterns, 4 output styles (academic / formal / friendly / conversational). Asks for style before rewriting.</td>
+      </tr>
+      <tr>
+        <td><a class="repo" href="https://github.com/thatmike1/humanizer-cz">thatmike1/humanizer-cz</a></td>
+        <td class="num">1</td>
+        <td class="num dim">2026-08-06</td>
+        <td><span class="tag unk">custom</span></td>
+        <td class="dim">Port of <a href="https://github.com/Aboudjem/humanizer-skill">Aboudjem/humanizer-skill</a> — 53 EN patterns, 5 voices, 0–100 score — plus a Czech grammar appendix and Czech banned-word list.</td>
+      </tr>
+      <tr>
+        <td><a class="repo" href="https://github.com/katerina-svi/katerinas-humanizer-cz">katerina-svi/katerinas-humanizer-cz</a></td>
+        <td class="num">0</td>
+        <td class="num dim">2026-07-19</td>
+        <td><span class="tag mit">MIT</span></td>
+        <td class="dim">Plugin-packaged. Anchors orthography and typography to ÚJČ <em>Internetová jazyková příručka</em>. Strict mode: never changes meaning, asks on ambiguity.</td>
+      </tr>
+      <tr>
+        <td><a class="repo" href="https://github.com/mirecekd/humanizer-cz">mirecekd/humanizer-cz</a></td>
+        <td class="num">0</td>
+        <td class="num dim">2026-04-24</td>
+        <td><span class="tag mit">MIT</span></td>
+        <td class="dim">27 patterns, cites actual linguistics research (Milička et al. 2025, MULTITuDE benchmark). Covers absence of <em>obecná čeština</em> as an AI tell.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Recommendation</h2>
+  <p><strong>Inherit <code>nowork-ai/anti-ai-slop-cz</code>.</strong> It is the only one written as guidance for <em>writing</em> rather than as a tool for <em>repairing</em> text. Organized in four layers — vocabulary, sentence patterns, punctuation, formatting — with LinkedIn-specific rules and a pre-submit self-check. Sized to actually load: 5&nbsp;KB in context, 6&nbsp;KB reference pulled on demand.</p>
+  <p>It is a Czech rework of <a href="https://github.com/jalaalrd/anti-ai-slop-writing">jalaalrd/anti-ai-slop-writing</a>, not a translation — the banned-phrase list is genuinely Czech (<em>„V dnešní době…“</em>, <em>„Stojí za zmínku, že…“</em>, <em>„posunout na další úroveň“</em>), and it names Czech-specific tells like the LinkedIn <em>„A tady je proč ↓“</em> hook.</p>
+
+  <h3>If you also want text repair</h3>
+  <p>Pair it with <strong>one</strong> of <code>bejek/humanizer-czech</code> or <code>mirecekd/humanizer-cz</code>. Both are independent 27-pattern lists that heavily overlap; installing both is redundant and they will fight over the same trigger phrases. <code>bejek</code> has more stars and the style-selection flow; <code>mirecekd</code> has the research citations and MIT clarity.</p>
+
+  <h3>Overlap with <code>unslop</code></h3>
+  <p>Direct. <code>unslop</code> covers the same job in English and is marked “must always apply.” Any Czech skill added here needs its description scoped tightly to Czech text, or the two will both fire on every writing task and duplicate instructions in context.</p>
+</section>
+
+<section>
+  <h2>Adjacent Czech tooling</h2>
+  <p>Not copy skills, but useful as verification references when writing Czech.</p>
+  <div class="cards">
+    <div class="card">
+      <h4><a href="https://github.com/techczech/cesky-narodni-korpus-skill">cesky-narodni-korpus-skill</a></h4>
+      <p>MIT. Queries the Czech National Corpus API — concordances, frequencies, collocations. The best-engineered Czech skill found: evals, six reference docs, a Python client. Use it to check whether a phrasing is actually idiomatic rather than guessing.</p>
+    </div>
+    <div class="card">
+      <h4>npm: czech-vocative</h4>
+      <p>5. pád for personal names. Relevant for any copy that addresses a reader by name.</p>
+    </div>
+    <div class="card">
+      <h4>npm: czech-inflection</h4>
+      <p>Declension of Czech words. Useful for templated or generated copy.</p>
+    </div>
+    <div class="card">
+      <h4>npm: @cspell/dict-cs-cz</h4>
+      <p>Czech spelling dictionary for cspell. Pipeline-level, not agent-level.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The Czech developer landscape</h2>
+  <p>No notable Czech developer is publishing a general skills library. What exists is a long tail of single-purpose Czech-domain skills, almost all at 0–5 stars, one skill per repo:</p>
+  <ul>
+    <li><a href="https://github.com/Majncz/fakturoid-skill">Fakturoid</a> invoicing API and <a href="https://github.com/Majncz/digisign-skill">DigiSign</a> e-signature, both by the same author</li>
+    <li><a href="https://github.com/vojtech-sokol/shopsync-plugins">shopsync-plugins</a> — ERP and e-shop integrations (Pohoda, Money, ABRA, Helios, Shoptet)</li>
+    <li><a href="https://github.com/SamuelPalubaCZ/bakalari-api-skill">Bakaláři</a> school system API, <a href="https://github.com/SupermanAdam007/countly-cz-ai-skill">countly.cz</a> financial calculators, Czech accident-report PDF filling</li>
+    <li><a href="https://github.com/katerina-svi/katerinas-ricky-gervais-tone">katerinas-ricky-gervais-tone</a> — the one Czech <em>voice</em> skill found, and it is a comedy-rewrite novelty rather than usable copy guidance</li>
+  </ul>
+  <p>Takeaway: Czech agent-skill authorship is hobbyist and fragmented. There is no maintained hub to subscribe to, so anything inherited here should be vendored — copied in and owned — not tracked as an upstream dependency.</p>
+</section>
+
+<section>
+  <h2>Before inheriting anything</h2>
+  <div class="callout">
+    <h3>A SKILL.md is instructions your agent will follow</h3>
+    <p>Every repo here is single-author and low-star. Read the full file before it lands in <code>~/.claude/skills/</code>, and pay particular attention to the two carrying <code>NOASSERTION</code> licenses — <code>anti-ai-slop-cz</code> and <code>thatmike1/humanizer-cz</code> — where reuse terms are unclear and worth confirming before vendoring.</p>
+    <p>All five are pure Markdown with no executable code. The only exception in this document is the corpus skill, which ships a Python client that makes outbound network calls and handles an API token.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What was searched</h2>
+  <p class="method">Recorded so this does not get re-run from scratch. The claude.ai skill catalog and org plugin catalog both returned zero results for every Czech, copywriting, localization, and tone-of-voice keyword. GitHub repository search was productive; GitHub <em>code</em> search was not, and <code>gh</code> is not installed on this machine, so the REST API was used directly via <code>curl</code>. The <code>skills.rest</code> and <code>awesomeskill.ai</code> registries have no Czech entries. <code>VoltAgent/awesome-agent-skills</code> — 1000+ skills — contains no match for “czech”, “česk”, or “cesk”. The productive queries were transliterated Czech words in repo descriptions: <code>cesky skill claude</code>, <code>czech claude skills</code>, <code>cestina</code>. English-only queries such as <code>czech copywriting</code> and <code>tone of voice skill czech brand</code> returned nothing useful.</p>
+</section>
+
+<footer>
+  <span>considerations/czech-copy-skills.html</span>
+  <span>Star counts and dates as of 2026-08-19</span>
+</footer>
+
+</div>
+</body>
+</html>
